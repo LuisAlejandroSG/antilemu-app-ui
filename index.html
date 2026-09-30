@@ -77,34 +77,35 @@
 
     .blob {
       position: absolute;
-      filter: blur(80px);
-      opacity: 0.5;
-      animation: liquidMorph 12s infinite alternate ease-in-out;
+      opacity: 0.6;
+      border-radius: 50%;
+      animation: liquidMorph 15s infinite alternate ease-in-out;
+      will-change: transform; /* Optimización hardware */
     }
 
     .blob-1 {
-      top: -10%;
-      left: -10%;
-      width: 50vw;
-      height: 50vw;
-      background: #1a1d24;
+      top: -20%;
+      left: -20%;
+      width: 70vw;
+      height: 70vw;
+      background: radial-gradient(circle, #1a1d24 0%, transparent 70%);
     }
 
     .blob-2 {
-      bottom: -10%;
-      right: -10%;
-      width: 60vw;
-      height: 60vw;
-      background: rgba(255, 179, 0, 0.08);
+      bottom: -20%;
+      right: -20%;
+      width: 80vw;
+      height: 80vw;
+      background: radial-gradient(circle, rgba(255, 179, 0, 0.1) 0%, transparent 70%);
       animation-delay: -3s;
     }
 
     .blob-3 {
-      top: 40%;
-      left: 40%;
-      width: 40vw;
-      height: 40vw;
-      background: #111318;
+      top: 30%;
+      left: 30%;
+      width: 60vw;
+      height: 60vw;
+      background: radial-gradient(circle, #111318 0%, transparent 70%);
       animation-delay: -6s;
     }
 
@@ -134,8 +135,7 @@
       width: 100%;
       max-width: 480px;
       height: 100vh;
-      background: rgba(20, 22, 28, 0.85);
-      backdrop-filter: blur(25px);
+      background: #14161C; /* Quitamos backdrop-filter que pone lento el celular */
       position: relative;
       display: flex;
       flex-direction: column;
@@ -212,7 +212,7 @@
       flex: 1;
       overflow-y: auto;
       overflow-x: hidden;
-      padding: 24px 24px 120px;
+      padding: 24px 24px calc(100px + env(safe-area-inset-bottom, 24px));
       display: flex;
       flex-direction: column;
       gap: 24px;
@@ -901,18 +901,18 @@
       color: var(--cat-yellow);
     }
 
-    /* Bottom Nav Fixed Layout */
     .bottom-nav {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      background: rgba(20, 22, 28, 0.95);
-      backdrop-filter: blur(20px);
+      background: rgba(20, 22, 28, 0.98); /* Más opaco para no usar tanto blur */
+      backdrop-filter: blur(10px); /* Reducido de 20px a 10px para mejor rendimiento */
       border-top: 1px solid rgba(255, 255, 255, 0.05);
       display: flex;
       justify-content: space-around;
-      padding: 12px 16px 20px; /* padding extra para celulares */
+      /* Utilizamos env(safe-area) para esquivar los botones nativos de Android/iPhone */
+      padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 24px)); 
       box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.6);
       z-index: 50;
       border-radius: 0;
