@@ -817,8 +817,8 @@
       top: 0;
       left: 0;
       bottom: 0;
-      width: 85%;
-      max-width: 360px;
+      width: 80%; /* Ajuste a 80% para que no tape todo */
+      max-width: 320px;
       background: var(--bg-surface);
       z-index: 101;
       transform: translateX(-100%);
@@ -904,18 +904,18 @@
     /* Bottom Nav Fixed Layout */
     .bottom-nav {
       position: absolute;
-      bottom: 20px;
-      left: 24px;
-      right: 24px;
-      background: rgba(30, 33, 42, 0.95);
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(20, 22, 28, 0.95);
       backdrop-filter: blur(20px);
-      border-radius: var(--radius-xl);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
       display: flex;
       justify-content: space-around;
-      padding: 12px 8px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9);
+      padding: 12px 16px 20px; /* padding extra para celulares */
+      box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.6);
       z-index: 50;
+      border-radius: 0;
     }
 
     .bottom-tab {
